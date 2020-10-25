@@ -1,0 +1,5 @@
+
+
+const SERVER_API_URL = 'http://127.0.0.1:5000';
+const GLOBAL_CONN_TIME_OUT = 10000;
+const GLOBAL_RECE_TIME_OUT = 5000;
