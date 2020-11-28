@@ -48,6 +48,7 @@ dependencies:
   provider: ^4.3.2+2
   # 下拉刷新
   flutter_easyrefresh: ^2.1.6
+  flutter_svg: ^0.19.2+1
 
 dev_dependencies:
   flutter_test:
@@ -67,8 +68,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-   assets:
-     - images/bg/launchpage.png
+  assets:
+    - assets/
+    - assets/images/info/tianqi-duoyun.svg
+    - assets/images/info/tianqi-qing.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

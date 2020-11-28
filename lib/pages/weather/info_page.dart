@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ngzk_weather/common/utils/screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:ngzk_weather/common/utils/screen.dart';
 
 class WeatherInfo extends StatelessWidget {
   @override
@@ -21,7 +22,7 @@ class WeatherInfo extends StatelessWidget {
       centerTitle: true,
       backgroundColor: Colors.transparent,
       elevation: 0,
-      brightness: Brightness.dark,
+      brightness: Brightness.light,
       title: RichText(
         textAlign: TextAlign.center,
         text: TextSpan(
@@ -36,7 +37,7 @@ class WeatherInfo extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         _dayPanel(context),
-        _hourPanel(context),
+        _weekPanel(context),
         _otherPanel(context),
       ],
     );
@@ -51,28 +52,474 @@ class WeatherInfo extends StatelessWidget {
 
   Widget _dayPanel(BuildContext context) {
     return Container(
-      height: duSetHeight(1240),
       decoration: new BoxDecoration(
-        color: Colors.grey,
+          // color: Colors.grey,
+          ),
+      child: Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            child: Column(
+              children: <Widget>[
+                Container(
+                    padding: EdgeInsets.only(top: duSetHeight(100)),
+                    child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        text: '北京市',
+                        style: TextStyle(
+                          color: Colors.black45,
+                          fontSize: duSetWidth(80),
+                        ),
+                      ),
+                    )),
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    text: '多云',
+                    style: TextStyle(
+                      color: Colors.black38,
+                      fontSize: duSetWidth(40),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            width: duSetWidth(320),
+            height: duSetHeight(320),
+            child: SvgPicture.asset(
+              "assets/images/info/tianqi-duoyun.svg",
+              color: Colors.black45,
+            ),
+          ),
+          Container(
+            child: RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                text: '30°',
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: duSetWidth(310),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(top: duSetHeight(35)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(right: duSetWidth(50)),
+                  child: Column(
+                    children: <Widget>[
+                      RichText(
+                        text: TextSpan(
+                          text: 'max',
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: duSetWidth(50),
+                          ),
+                        ),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          text: '31°',
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: duSetWidth(50),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                //垂直分割线
+                SizedBox(
+                  width: duSetWidth(50),
+                  height: duSetHeight(100),
+                  child: VerticalDivider(
+                    width: duSetWidth(50),
+                    color: Colors.black,
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: duSetWidth(60)),
+                  child: Column(
+                    children: <Widget>[
+                      RichText(
+                        text: TextSpan(
+                          text: 'min',
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: duSetWidth(50),
+                          ),
+                        ),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          text: '23°',
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: duSetWidth(50),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+              // color: Colors.black54,
+            ),
+          ),
+        ],
       ),
     );
   }
 
-  Widget _hourPanel(BuildContext context) {
+  Widget _weekPanel(BuildContext context) {
     return Container(
-      height: duSetHeight(240),
-      decoration: new BoxDecoration(
-        color: Colors.blue,
+      padding: EdgeInsets.only(top: duSetWidth(30)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            child: Column(
+              children: <Widget>[
+                RichText(
+                  text: TextSpan(
+                    text: '星期一',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: duSetWidth(30),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: duSetWidth(100),
+                  height: duSetHeight(100),
+                  child: SvgPicture.asset(
+                    "assets/images/info/tianqi-qing.svg",
+                    color: Colors.black54,
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    text: '31°',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: duSetWidth(35),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            child: Column(
+              children: <Widget>[
+                RichText(
+                  text: TextSpan(
+                    text: '星期二',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: duSetWidth(30),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: duSetWidth(100),
+                  height: duSetHeight(100),
+                  child: SvgPicture.asset(
+                    "assets/images/info/tianqi-qing.svg",
+                    color: Colors.black54,
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    text: '26°',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: duSetWidth(35),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            child: Column(
+              children: <Widget>[
+                RichText(
+                  text: TextSpan(
+                    text: '星期三',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: duSetWidth(30),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: duSetWidth(100),
+                  height: duSetHeight(100),
+                  child: SvgPicture.asset(
+                    "assets/images/info/tianqi-qing.svg",
+                    color: Colors.black54,
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    text: '29°',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: duSetWidth(35),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            child: Column(
+              children: <Widget>[
+                RichText(
+                  text: TextSpan(
+                    text: '星期四',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: duSetWidth(30),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: duSetWidth(100),
+                  height: duSetHeight(100),
+                  child: SvgPicture.asset(
+                    "assets/images/info/tianqi-qing.svg",
+                    color: Colors.black54,
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    text: '28°',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: duSetWidth(35),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            child: Column(
+              children: <Widget>[
+                RichText(
+                  text: TextSpan(
+                    text: '星期五',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: duSetWidth(30),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: duSetWidth(100),
+                  height: duSetHeight(100),
+                  child: SvgPicture.asset(
+                    "assets/images/info/tianqi-qing.svg",
+                    color: Colors.black54,
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    text: '19°',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: duSetWidth(35),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            child: Column(
+              children: <Widget>[
+                RichText(
+                  text: TextSpan(
+                    text: '星期六',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: duSetWidth(30),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: duSetWidth(100),
+                  height: duSetHeight(100),
+                  child: SvgPicture.asset(
+                    "assets/images/info/tianqi-qing.svg",
+                    color: Colors.black54,
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    text: '25°',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: duSetWidth(35),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            child: Column(
+              children: <Widget>[
+                RichText(
+                  text: TextSpan(
+                    text: '星期日',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: duSetWidth(30),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: duSetWidth(100),
+                  height: duSetHeight(100),
+                  child: SvgPicture.asset(
+                    "assets/images/info/tianqi-qing.svg",
+                    color: Colors.black54,
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    text: '20°',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: duSetWidth(35),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
 
   Widget _otherPanel(BuildContext context) {
     return Container(
-      height: duSetHeight(215),
-      decoration: new BoxDecoration(
-        color: Colors.orange,
-      ),
-    );
+        padding: EdgeInsets.only(top: duSetHeight(60)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              child: Column(
+                children: <Widget>[
+                  RichText(
+                    text: TextSpan(
+                      text: '风速',
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: duSetWidth(50),
+                      ),
+                    ),
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      text: '3.1m/s',
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: duSetWidth(50),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              child: Column(
+                children: <Widget>[
+                  RichText(
+                    text: TextSpan(
+                      text: '湿度',
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: duSetWidth(50),
+                      ),
+                    ),
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      text: '80%',
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: duSetWidth(50),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              child: Column(
+                children: <Widget>[
+                  RichText(
+                    text: TextSpan(
+                      text: '日落',
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: duSetWidth(50),
+                      ),
+                    ),
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      text: '17:30',
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: duSetWidth(50),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              child: Column(
+                children: <Widget>[
+                  RichText(
+                    text: TextSpan(
+                      text: '日出',
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: duSetWidth(50),
+                      ),
+                    ),
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      text: '05:30',
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: duSetWidth(50),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ));
   }
 }
