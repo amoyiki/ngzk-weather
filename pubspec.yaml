@@ -48,6 +48,7 @@ dependencies:
   provider: ^4.3.2+2
   # 下拉刷新
   flutter_easyrefresh: ^2.1.6
+  # svg
   flutter_svg: ^0.19.2+1
 
 dev_dependencies:
@@ -69,9 +70,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/
     - assets/images/info/tianqi-duoyun.svg
     - assets/images/info/tianqi-qing.svg
+    - assets/citys.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
