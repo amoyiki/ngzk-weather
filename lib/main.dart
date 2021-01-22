@@ -28,7 +28,7 @@ class WeatherApp extends StatelessWidget {
         primarySwatch: Colors.purple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: WeatherInfo(),
+      home: WeatherInfoPage(),
       debugShowCheckedModeBanner: false,
       builder: ExtendedNavigator.builder<AppRouter>(
         router: AppRouter(),

@@ -43,7 +43,7 @@ dependencies:
   # 路由管理
   auto_route: ^0.6.9
   # 国际化
-  intl: ^0.16.1
+  intl: ^0.17.0-nullsafety.2
   # 加载动画
   loading_animations: ^2.1.0
   # 状态管理
@@ -56,6 +56,12 @@ dependencies:
   oktoast: ^2.3.2
   # 下拉效果
   pull_to_refresh: ^1.6.3
+  # 城市列表
+  azlistview: ^1.1.0
+  # 汉字转拼音
+  lpinyin: ^1.1.0  
+  # 常用工具类
+  flustars: ^0.3.2  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -75,6 +81,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/icon/gengduo.svg
     - assets/images/info/tianqi-duoyun.svg
     - assets/images/info/tianqi-qing.svg
     - assets/citys.json

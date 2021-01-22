@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ngzk_weather/common/utils/screen.dart';
+import 'package:ngzk_weather/routes/routes.gr.dart';
 
-class WeatherInfo extends StatelessWidget {
+class WeatherInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(
@@ -25,9 +27,35 @@ class WeatherInfo extends StatelessWidget {
       brightness: Brightness.light,
       title: RichText(
         textAlign: TextAlign.center,
-        text: TextSpan(
-            text: '2020-10-25', style: TextStyle(color: Colors.black38)),
+        text: TextSpan(text: '2020-10-25', style: TextStyle(color: Colors.black38)),
       ),
+      actions: <Widget>[
+        PopupMenuButton(
+          icon: SvgPicture.asset(
+            "assets/images/icon/gengduo.svg",
+            color: Colors.black45,
+            width: duSetWidth(50),
+            height: duSetHeight(50),
+          ),
+          itemBuilder: (BuildContext context) {
+            return <PopupMenuItem<String>>[
+              PopupMenuItem<String>(
+                child: Text("城市列表"),
+                value: "city_lsit",
+              ),
+            ];
+          },
+          onSelected: (String action) {
+            // 点击选项的时候
+            switch (action) {
+              case 'city_lsit':
+                print("跳转城市列表");
+                ExtendedNavigator.of(context).push(Routes.cityList);
+                break;
+            }
+          },
+        )
+      ],
     );
   }
 
