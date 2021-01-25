@@ -16,7 +16,35 @@ class CityListPage extends StatefulWidget {
 
 class _CityListPageState extends State<CityListPage> {
   List<CityListModel> cityList = [];
-
+  List<String> kIndexBarData = const [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z',
+    '#'
+  ];
   @override
   void initState() {
     super.initState();
@@ -57,36 +85,36 @@ class _CityListPageState extends State<CityListPage> {
 
   Widget header() {
     return Container(
-      color: Colors.white,
-      height: duSetHeight(44),
+      color: Colors.black12,
+      height: duSetHeight(80),
       child: Row(
         children: <Widget>[
           Expanded(
             child: TextField(
               autofocus: false,
               decoration: InputDecoration(
-                contentPadding: EdgeInsets.only(left: 10, right: 10),
+                // contentPadding: EdgeInsets.only(left: duSetWidth(3), right: duSetWidth(1)),
                 border: InputBorder.none,
-                labelStyle: TextStyle(fontSize: duSetWidth(14), color: Colors.grey),
+                labelStyle: TextStyle(fontSize: duSetFontSize(60), color: Colors.grey),
                 hintText: "城市中文或拼音",
-                hintStyle: TextStyle(fontSize: duSetWidth(14), color: Colors.grey),
+                hintStyle: TextStyle(fontSize: duSetFontSize(40), color: Colors.grey),
               ),
             ),
           ),
           Container(
-            width: duSetWidth(0.33),
-            height: duSetHeight(14),
+            width: duSetWidth(1),
+            height: duSetHeight(60),
             color: Colors.grey,
           ),
           InkWell(
             onTap: () {
-              Navigator.pop(context);
+              Navigator.of(context).pop();
             },
             child: Padding(
               padding: const EdgeInsets.all(10),
               child: Text(
                 "取消",
-                style: TextStyle(color: Colors.grey, fontSize: duSetFontSize(14)),
+                style: TextStyle(color: Colors.grey, fontSize: duSetFontSize(40)),
               ),
             ),
           ),
@@ -104,42 +132,45 @@ class _CityListPageState extends State<CityListPage> {
         child: Column(
           children: [
             header(),
-            Expanded(child: Material(
+            Expanded(
+                child: Material(
               child: Card(
                 clipBehavior: Clip.hardEdge,
-                shape: const RoundedRectangleBorder(borderRadius: const BorderRadius.only(
-                  topLeft:  Radius.circular(4),
-                  topRight:  Radius.circular(4),
-                ),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(4),
+                    topRight: Radius.circular(4),
+                  ),
                 ),
                 child: Column(
                   children: [
                     Container(
                       alignment: Alignment.centerLeft,
-                      padding: const EdgeInsets.only(left: 15),
-                      height: duSetHeight(50),
-                      child: Text("当前城市: "+ "北京"),
+                      padding: const EdgeInsets.only(left: 2),
+                      height: duSetHeight(60),
+                      child: Text("当前城市: " + "北京"),
                     ),
                     Expanded(
-                      child: AzListView(data: cityList,
-                      itemCount: cityList.length,
-                      itemBuilder: (BuildContext context, int index){
-                        CityListModel model = cityList[index];
-                        return ListItem.getListItem(context, model);
-                      },
-                      padding: EdgeInsets.zero,
-                      susItemBuilder:  (BuildContext context, int index){
-                       CityListModel model = cityList[index];
-                       String tag = model.getSuspensionTag();
-                        return ListItem.getSusItem(context, tag);
-                      }
+                      child: AzListView(
+                        data: cityList,
+                        itemCount: cityList.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          CityListModel model = cityList[index];
+                          return ListItem.getListItem(context, model);
+                        },
+                        padding: EdgeInsets.zero,
+                        susItemBuilder: (BuildContext context, int index) {
+                          CityListModel model = cityList[index];
+                          String tag = model.getSuspensionTag();
+                          return ListItem.getSusItem(context, tag);
+                        },
+                        indexBarData: ['★', ...kIndexBarData],
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
-            )
-            ),
+            )),
           ],
         ),
       ),

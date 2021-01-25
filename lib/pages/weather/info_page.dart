@@ -5,7 +5,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ngzk_weather/common/utils/screen.dart';
 import 'package:ngzk_weather/routes/routes.gr.dart';
 
-class WeatherInfoPage extends StatelessWidget {
+class WeatherInfoPage extends StatefulWidget {
+  @override
+  _WeatherInfoState createState() => _WeatherInfoState();
+}
+
+class _WeatherInfoState extends State<WeatherInfoPage> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(
@@ -50,7 +55,7 @@ class WeatherInfoPage extends StatelessWidget {
             switch (action) {
               case 'city_lsit':
                 print("跳转城市列表");
-                ExtendedNavigator.of(context).push(Routes.cityList);
+                ExtendedNavigator.of(context).push(Routes.cityListPage);
                 break;
             }
           },

@@ -23,14 +23,14 @@ class ListItem {
     return Container(
       height: susHeight,
       width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.only(left: 16),
+      padding: EdgeInsets.only(left: duSetWidth(16)),
       color: Colors.black26,
       alignment: Alignment.centerLeft,
       child: Text(
         '$tag',
         softWrap: false,
         style: TextStyle(
-          fontSize: duSetFontSize(14),
+          fontSize: duSetFontSize(30),
           color: Colors.black,
         ),
       ),
